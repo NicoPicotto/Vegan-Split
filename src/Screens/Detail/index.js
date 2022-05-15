@@ -3,13 +3,17 @@ import React from 'react';
 import { styles } from './styles';
 
 const Detail = ({ route, navigation }) => {
-	const { name, gasto, vegan } = route.params;
+
+	const {array} = route.params;
+
+	console.log("ItemList: ", array)
+
 
 	return (
 		<View style={styles.container}>
-			<Text>{name}</Text>
-			<Button title='Vegan' onPress={() => vegan === true} />
-			{vegan ? <Text>Es vegan</Text> : <Text>No es vegan</Text>}
+			<View>
+				<Text>Detalle</Text>
+			</View>
 		</View>
 	);
 };
