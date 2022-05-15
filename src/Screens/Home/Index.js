@@ -89,6 +89,7 @@ const Home = ({ navigation }) => {
 					keyboardType='numeric'
 					onChangeText={handleOnChangeGasto}
 					number={gasto}
+                    value={gasto}
 				/>
 				<Text>¿Es vegan?</Text>
 				<Switch
@@ -110,9 +111,9 @@ const Home = ({ navigation }) => {
 					>
 						<Text style={styles.itemsAgregados}>{item.value}</Text>
 						{item.vegan ? (
-							<Text style={styles.vegan}>Es vegano</Text>
+							<Text style={styles.vegan}>Vegan</Text>
 						) : (
-							<Text style={styles.noVegan}>No es vegan</Text>
+							<Text style={styles.noVegan}>No vegan</Text>
 						)}
 						<Text style={styles.gasto}> $ {item.gasto}</Text>
 					</TouchableOpacity>
