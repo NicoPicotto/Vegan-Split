@@ -13,7 +13,7 @@ import { styles } from './styles';
 import CustomButton from '../../Components/Button';
 import DeleteModal from '../../Components/DeleteModal';
 
-const Home = ({ navigation }) => {
+const Home = () => {
 	const [text, setTextItem] = useState('');
 	const [itemList, setItemList] = useState([]);
 	const [selectedItem, setSelectedItem] = useState([]);
@@ -33,6 +33,11 @@ const Home = ({ navigation }) => {
 		setIsEnabled((previousState) => !previousState);
 	};
 
+	//Precio total
+	const totalPrice = itemList.reduce((total, item) => {
+		return total + item.gasto;
+	}, 0);
+
 	//Función para capturar el nombre
 	const handleOnChangeInput = (value) => {
 		setTextItem(value);
@@ -43,12 +48,17 @@ const Home = ({ navigation }) => {
 		setGasto(number);
 	};
 
-	//Función para añadir el texto capturado
+	//Función para añadir el item a la lista
 	const addItem = () => {
 		if (text !== '') {
 			setItemList([
 				...itemList,
-				{ id: itemList.length + 1, value: text, gasto: gasto, vegan: vegan },
+				{
+					id: itemList.length + 1,
+					value: text,
+					gasto: parseInt(gasto),
+					vegan: vegan,
+				},
 			]);
 			setTextItem('');
 			setGasto('');
@@ -109,8 +119,8 @@ const Home = ({ navigation }) => {
 						keyboardType='numeric'
 						onChangeText={handleOnChangeGasto}
 						number={gasto}
-						value={gasto}
 						style={styles.priceInput}
+						value={gasto}
 					/>
 				</View>
 				<View style={styles.settingsVegan}>
@@ -142,6 +152,7 @@ const Home = ({ navigation }) => {
 				)}
 				keyExtractor={(item) => item.id}
 			/>
+			<Text style={styles.totalPrice}>TOTAL GASTADO: $ {totalPrice}</Text>
 			<DeleteModal
 				onHandleDeleteItem={handleDeleteItem}
 				visible={modalDeleteVisible}
@@ -150,13 +161,13 @@ const Home = ({ navigation }) => {
 			/>
 			<View style={styles.buttonContainer}>
 				<CustomButton
-					textButton='LIMPIAR'
+					textButton='BORRAR TODO'
 					bgColor='#D60700'
 					textColor='#ecedf1'
 					onPressProp={deleteAll}
 				/>
 				<CustomButton
-					textButton='CALCULAR'
+					textButton='CALCULAR TODO'
 					bgColor='#88A61C'
 					textColor='#ecedf1'
 					onPressProp={null}

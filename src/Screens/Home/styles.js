@@ -112,4 +112,14 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		marginTop: 22,
 	},
+	totalPrice: {
+		fontSize: 16,
+		width: '60%',
+		textAlign: 'center',
+		fontWeight: "bold",
+		marginVertical: 20,
+		paddingVertical: 5,
+		borderBottomColor: 'gainsboro',
+		borderBottomWidth: 1,
+	},
 });
