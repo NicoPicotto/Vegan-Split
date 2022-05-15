@@ -6,17 +6,19 @@ import {
 	FlatList,
 	Switch,
 	TextInput,
-	Modal,
+	StatusBar,
 } from 'react-native';
 import React, { useState } from 'react';
 import { styles } from './styles';
-import FriendInput from '../../Components/Input';
 import CustomButton from '../../Components/Button';
+import DeleteModal from '../../Components/DeleteModal';
 
 const Home = ({ navigation }) => {
 	const [text, setTextItem] = useState('');
 	const [itemList, setItemList] = useState([]);
+	const [selectedItem, setSelectedItem] = useState([]);
 	const [isEnabled, setIsEnabled] = useState(false);
+	const [modalDeleteVisible, setDeleteModalVisible] = useState(false);
 	const [vegan, setVegan] = useState(false);
 	const [gasto, setGasto] = useState('');
 
@@ -56,57 +58,77 @@ const Home = ({ navigation }) => {
 		}
 	};
 
-	//Función para entrar al detalle
-	const onSelectDetail = (item) => {
-		navigation.navigate('Detail', {
-			name: item.name,
-		});
-	};
-
-	//Funcion para borrar item
+	//Funcion para borrar todos los items
 	const deleteAll = () => {
 		setItemList([]);
 	};
 
+	//Función para borrar un item
+	const handleDeleteItem = (id) => {
+		const newList = itemList.filter((itemList) => itemList.id !== id);
+		setSelectedItem({});
+		setItemList(newList);
+		setDeleteModalVisible(!modalDeleteVisible);
+	};
+
+	//Función para cerrar modal
+	const cerrarModal = () => {
+		setDeleteModalVisible(!modalDeleteVisible);
+	};
+
+	const onHandleDeleteModal = (id) => {
+		setSelectedItem(itemList.find((itemList) => itemList.id === id));
+		setDeleteModalVisible(!modalDeleteVisible);
+		console.log('Selected item: ', selectedItem);
+	};
+
 	return (
 		<View style={styles.container}>
+			<StatusBar
+				animated={true}
+				backgroundColor='#ecedf1'
+				hidden={false}
+				barStyle={'dark-content'}
+			/>
 			<View style={styles.inputContainer}>
 				<TextInput
-					placeholder='Agregar amigo...'
+					placeholder='Agregar gasto...'
 					onChangeText={handleOnChangeInput}
 					autoCorrect={false}
 					value={text}
 					style={styles.textInput}
 				/>
 				<TouchableOpacity style={styles.button} onPress={() => addItem()}>
-					<Text>+</Text>
+					<Text style={styles.textButton}>Agregar</Text>
 				</TouchableOpacity>
 			</View>
 			<View style={styles.settingsContainer}>
-				<Text>Gastó</Text>
-				<TextInput
-					placeholder='$0.00'
-					keyboardType='numeric'
-					onChangeText={handleOnChangeGasto}
-					number={gasto}
-                    value={gasto}
-				/>
-				<Text>¿Es vegan?</Text>
-				<Switch
-					trackColor={{ false: '#767577', true: '#f3b52e' }}
-					thumbColor={isEnabled ? '#f3b52e' : '#f3b52e'}
-					onValueChange={toggleSwitch}
-					value={isEnabled}
-				/>
+				<View style={styles.settingsPrice}>
+					<TextInput
+						placeholder='Agregar precio...'
+						keyboardType='numeric'
+						onChangeText={handleOnChangeGasto}
+						number={gasto}
+						value={gasto}
+						style={styles.priceInput}
+					/>
+				</View>
+				<View style={styles.settingsVegan}>
+					<Text>¿Es vegan?</Text>
+					<Switch
+						trackColor={{ false: '#767577', true: '#D5D977' }}
+						thumbColor={isEnabled ? '#88A61C' : '#88A61C'}
+						onValueChange={toggleSwitch}
+						value={isEnabled}
+					/>
+				</View>
 			</View>
 			<FlatList
 				data={itemList}
 				style={styles.listContainer}
 				renderItem={({ item }) => (
 					<TouchableOpacity
-						onPress={() => {
-							onSelectDetail(item);
-						}}
+						onPress={() => onHandleDeleteModal(item.id)}
 						style={styles.touchableContainer}
 					>
 						<Text style={styles.itemsAgregados}>{item.value}</Text>
@@ -120,18 +142,24 @@ const Home = ({ navigation }) => {
 				)}
 				keyExtractor={(item) => item.id}
 			/>
+			<DeleteModal
+				onHandleDeleteItem={handleDeleteItem}
+				visible={modalDeleteVisible}
+				selectedItem={selectedItem}
+				onHandleCerrar={cerrarModal}
+			/>
 			<View style={styles.buttonContainer}>
 				<CustomButton
 					textButton='LIMPIAR'
-					bgColor='red'
+					bgColor='#D60700'
 					textColor='#ecedf1'
 					onPressProp={deleteAll}
 				/>
 				<CustomButton
 					textButton='CALCULAR'
-					bgColor='#f3b52e'
-					textColor='black'
-					onPressProp={onSelectDetail}
+					bgColor='#88A61C'
+					textColor='#ecedf1'
+					onPressProp={null}
 				/>
 			</View>
 		</View>
