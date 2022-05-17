@@ -13,7 +13,7 @@ import { styles } from './styles';
 import CustomButton from '../../Components/Button';
 import DeleteModal from '../../Components/DeleteModal';
 
-const Home = () => {
+const Home = ({ navigation }) => {
 	const [text, setTextItem] = useState('');
 	const [itemList, setItemList] = useState([]);
 	const [selectedItem, setSelectedItem] = useState([]);
@@ -62,7 +62,6 @@ const Home = () => {
 			]);
 			setTextItem('');
 			setGasto('');
-			console.log(itemList);
 		} else {
 			Alert.alert('Debes ingresar un nombre');
 		}
@@ -86,10 +85,18 @@ const Home = () => {
 		setDeleteModalVisible(!modalDeleteVisible);
 	};
 
+	//Función para abrir el modal con los detalles
 	const onHandleDeleteModal = (id) => {
 		setSelectedItem(itemList.find((itemList) => itemList.id === id));
 		setDeleteModalVisible(!modalDeleteVisible);
-		console.log('Selected item: ', selectedItem);
+	};
+
+	//Función para ir a la screen Calculate
+	const handleCalculate = () => {
+		navigation.navigate('Calculate', {
+			total: totalPrice,
+			array: itemList
+		});
 	};
 
 	return (
@@ -143,9 +150,9 @@ const Home = () => {
 					>
 						<Text style={styles.itemsAgregados}>{item.value}</Text>
 						{item.vegan ? (
-							<Text style={styles.vegan}>Vegan</Text>
+							<Text style={styles.vegan}>VEGAN</Text>
 						) : (
-							<Text style={styles.noVegan}>No vegan</Text>
+							<Text style={styles.noVegan}>NO VEGAN</Text>
 						)}
 						<Text style={styles.gasto}> $ {item.gasto}</Text>
 					</TouchableOpacity>
@@ -161,16 +168,16 @@ const Home = () => {
 			/>
 			<View style={styles.buttonContainer}>
 				<CustomButton
-					textButton='BORRAR TODO'
+					textButton='LIMPIAR'
 					bgColor='#D60700'
 					textColor='#ecedf1'
 					onPressProp={deleteAll}
 				/>
 				<CustomButton
-					textButton='CALCULAR TODO'
+					textButton='SIGUIENTE'
 					bgColor='#88A61C'
 					textColor='#ecedf1'
-					onPressProp={null}
+					onPressProp={handleCalculate}
 				/>
 			</View>
 		</View>
