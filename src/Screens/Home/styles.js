@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-between',
+		marginBottom: 10,
 	},
 	button: {
 		width: '25%',
@@ -57,20 +58,24 @@ export const styles = StyleSheet.create({
 	},
 	gasto: {
 		fontSize: 16,
-		width: '20%',
+		width: '25%',
 		textAlign: 'right',
 	},
 	vegan: {
-		fontSize: 11,
+		fontSize: 10,
 		backgroundColor: '#88A61C',
 		color: 'white',
+		textAlign: 'center',
+		width: '25%',
 		paddingVertical: 3,
 		paddingHorizontal: 5,
 	},
 	noVegan: {
-		fontSize: 11,
+		fontSize: 10,
 		backgroundColor: '#D60700',
+		textAlign: 'center',
 		color: 'white',
+		width: '25%',
 		paddingVertical: 3,
 		paddingHorizontal: 5,
 	},
@@ -88,7 +93,8 @@ export const styles = StyleSheet.create({
 		justifyContent: 'space-evenly',
 		borderBottomColor: '#88A61C',
 		borderBottomWidth: 1,
-		paddingBottom: 10,
+		marginBottom: 10,
+		paddingBottom: 20,
 	},
 	settingsPrice: {
 		width: '50%',
@@ -107,7 +113,7 @@ export const styles = StyleSheet.create({
 		width: '50%',
 		flexDirection: 'row',
 		alignItems: 'center',
-		justifyContent: 'center',
+		justifyContent: 'space-around',
 	},
 	centeredView: {
 		flex: 1,
@@ -118,8 +124,8 @@ export const styles = StyleSheet.create({
 	totalPrice: {
 		fontSize: 15,
 		textAlign: 'center',
-		fontWeight: "bold",
+		fontWeight: 'bold',
 		paddingVertical: 20,
-		height: "20%",
+		height: '20%',
 	},
 });

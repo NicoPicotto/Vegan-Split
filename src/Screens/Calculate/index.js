@@ -58,7 +58,7 @@ const Calculate = ({ navigation, total, array }) => {
 		}, 0);
 
 		//División por cada vegano
-		let veganEach = veganProductPrice / veganos;
+		let veganEach = veganProductPrice / (personas + veganos);
 		//División por cada persona
 		let carnacaEach = totalPrice / (personas + veganos);
 
@@ -95,7 +95,7 @@ const Calculate = ({ navigation, total, array }) => {
 					</View>
 					{totalPriceCarnacas ? (
 						<View style={styles.resultContainer}>
-							<Text style={styles.cuantoPagan}>PAGAN </Text>
+							<Text style={styles.cuantoPagan}>Paga c/u </Text>
 							<Text style={styles.cuantoPagan}>${totalPriceCarnacas}</Text>
 						</View>
 					) : null}
@@ -119,7 +119,7 @@ const Calculate = ({ navigation, total, array }) => {
 					</View>
 					{totalPriceVeganos ? (
 						<View style={styles.resultContainer}>
-							<Text style={styles.cuantoPagan}>PAGA C/U</Text>
+							<Text style={styles.cuantoPagan}>Paga c/u</Text>
 							<Text style={styles.cuantoPagan}>${totalPriceVeganos}</Text>
 						</View>
 					) : null}
