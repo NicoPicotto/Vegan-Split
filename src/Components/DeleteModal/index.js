@@ -20,13 +20,13 @@ const DeleteModal = ({
 					<CustomButton
 						textButton='ELIMINAR'
 						bgColor='#D60700'
-						textColor='#ecedf1'
+						textColor='gainsboro'
 						onPressProp={() => onHandleDeleteItem(selectedItem.id)}
 					/>
 					<CustomButton
 						textButton='CERRAR'
 						bgColor='grey'
-						textColor='#ecedf1'
+						textColor='gainsboro'
 						onPressProp={onHandleCerrar}
 					/>
 				</View>

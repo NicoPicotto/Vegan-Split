@@ -4,6 +4,7 @@ import { useRoute } from '@react-navigation/native';
 import { styles } from './styles';
 import CustomButton from '../../Components/Button';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 const Calculate = ({ navigation, total, array }) => {
 	const route = useRoute();
@@ -61,7 +62,7 @@ const Calculate = ({ navigation, total, array }) => {
 
 		//División para carnacas
 		let carnacaTotalPrice = totalPrice - veganProductPrice;
-		let carnacaEach = (carnacaTotalPrice / personas) + veganEach;
+		let carnacaEach = carnacaTotalPrice / personas + veganEach;
 
 		//Redondeos
 		let veganRounded = veganEach.toFixed(2);
@@ -74,11 +75,23 @@ const Calculate = ({ navigation, total, array }) => {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.totalPrice}>Total gastado ${totalPrice}</Text>
-			<Text style={styles.cuantos}>¿Cuántos son?</Text>
+			<View style={styles.dataContainer}>
+				<View style={styles.totalPriceContainer}>
+					<FontAwesome5 name='money-bill-wave' size={18} color='#46563a' />
+					<Text style={styles.totalPrice}> TOTAL GASTADO: $ {totalPrice}</Text>
+				</View>
+				<Text style={styles.cuantos}>¿Cuántos son?</Text>
+			</View>
 			<View style={styles.personContainer}>
 				<View style={styles.carnacasContainer}>
-					<Text style={styles.boxTitle}><MaterialCommunityIcons name="food-drumstick" size={24} color="#D60700" /> Carnacas</Text>
+					<Text style={styles.boxTitle}>
+						<MaterialCommunityIcons
+							name='food-drumstick'
+							size={24}
+							color='#8C0700'
+						/>{' '}
+						Carnacas
+					</Text>
 					<Text style={styles.counter}>{personas}</Text>
 					<View style={styles.buttonContainer}>
 						<TouchableOpacity
@@ -97,12 +110,15 @@ const Calculate = ({ navigation, total, array }) => {
 					{totalPriceCarnacas ? (
 						<View style={styles.resultContainer}>
 							<Text style={styles.cuantoPagan}>Paga c/u </Text>
-							<Text style={styles.cuantoPagan}>${totalPriceCarnacas}</Text>
+							<Text style={styles.cuantoPrecio}>${totalPriceCarnacas}</Text>
 						</View>
 					) : null}
 				</View>
 				<View style={styles.veganContainer}>
-					<Text style={styles.boxTitle}><MaterialCommunityIcons name="leaf" size={24} color="#88A61C" /> Veganos</Text>
+					<Text style={styles.boxTitle}>
+						<MaterialCommunityIcons name='leaf' size={24} color='#46563a' />{' '}
+						Veganos
+					</Text>
 					<Text style={styles.counter}>{veganos}</Text>
 					<View style={styles.buttonContainer}>
 						<TouchableOpacity
@@ -121,22 +137,25 @@ const Calculate = ({ navigation, total, array }) => {
 					{totalPriceVeganos ? (
 						<View style={styles.resultContainer}>
 							<Text style={styles.cuantoPagan}>Paga c/u</Text>
-							<Text style={styles.cuantoPagan}>${totalPriceVeganos}</Text>
+							<Text style={styles.cuantoPrecio}>${totalPriceVeganos}</Text>
 						</View>
 					) : null}
 				</View>
 			</View>
-			<View style={styles.buttonBottomContainer}>
+			<View style={styles.resultWrapper}>
+				<View></View>
+			</View>
+			<View style={styles.buttonContainer}>
 				<CustomButton
 					textButton='VOLVER'
-					bgColor='#D60700'
-					textColor='#ecedf1'
+					bgColor='#8C0700'
+					textColor='gainsboro'
 					onPressProp={onHandleBack}
 				/>
 				<CustomButton
 					textButton='CALCULAR'
-					bgColor='#88A61C'
-					textColor='#ecedf1'
+					bgColor='#46563a'
+					textColor='gainsboro'
 					onPressProp={calcularTodo}
 				/>
 			</View>

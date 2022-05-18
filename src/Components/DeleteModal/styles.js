@@ -25,7 +25,6 @@ export const styles = StyleSheet.create({
 	precioModal: {
 		fontSize: 18,
 		fontWeight: 'bold',
-    color: "#88A61C",
-
+		color: '#46563a',
 	},
 });

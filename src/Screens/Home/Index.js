@@ -6,12 +6,20 @@ import {
 	FlatList,
 	Switch,
 	TextInput,
-	StatusBar,
+	Keyboard,
 } from 'react-native';
 import React, { useState } from 'react';
 import { styles } from './styles';
 import CustomButton from '../../Components/Button';
 import DeleteModal from '../../Components/DeleteModal';
+import AppLoading from 'expo-app-loading';
+import {
+	useFonts,
+	Inter_700Bold,
+	Inter_400Regular,
+} from '@expo-google-fonts/inter';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 const Home = ({ navigation }) => {
 	const [text, setTextItem] = useState('');
@@ -21,6 +29,15 @@ const Home = ({ navigation }) => {
 	const [modalDeleteVisible, setDeleteModalVisible] = useState(false);
 	const [vegan, setVegan] = useState(false);
 	const [gasto, setGasto] = useState('');
+
+	let [fontsLoaded] = useFonts({
+		Inter_700Bold,
+		Inter_400Regular,
+	});
+
+	if (!fontsLoaded) {
+		return <AppLoading />;
+	}
 
 	//Switch para vegan
 	const toggleSwitch = () => {
@@ -62,6 +79,7 @@ const Home = ({ navigation }) => {
 			]);
 			setTextItem('');
 			setGasto('');
+			Keyboard.dismiss();
 		} else {
 			Alert.alert('Debes ingresar un nombre');
 		}
@@ -95,18 +113,12 @@ const Home = ({ navigation }) => {
 	const handleCalculate = () => {
 		navigation.navigate('Calculate', {
 			total: totalPrice,
-			array: itemList
+			array: itemList,
 		});
 	};
 
 	return (
 		<View style={styles.container}>
-			<StatusBar
-				animated={true}
-				backgroundColor='#ecedf1'
-				hidden={false}
-				barStyle={'dark-content'}
-			/>
 			<View style={styles.inputContainer}>
 				<TextInput
 					placeholder='Agregar gasto...'
@@ -114,6 +126,7 @@ const Home = ({ navigation }) => {
 					autoCorrect={false}
 					value={text}
 					style={styles.textInput}
+					selectionColor='#46563a'
 				/>
 				<TouchableOpacity style={styles.button} onPress={() => addItem()}>
 					<Text style={styles.textButton}>Agregar</Text>
@@ -128,15 +141,17 @@ const Home = ({ navigation }) => {
 						number={gasto}
 						style={styles.priceInput}
 						value={gasto}
+						selectionColor='#46563a'
 					/>
 				</View>
 				<View style={styles.settingsVegan}>
-					<Text>¿Es vegan?</Text>
+					<Text style={styles.veganQuestion}>¿Es vegan?</Text>
 					<Switch
-						trackColor={{ false: '#767577', true: '#D5D977' }}
-						thumbColor={isEnabled ? '#88A61C' : '#88A61C'}
+						trackColor={{ false: '#9F3530', true: '#7E9C68' }}
+						thumbColor={isEnabled ? '#46563a' : '#dfdfdf'}
 						onValueChange={toggleSwitch}
 						value={isEnabled}
+						style={styles.switch}
 					/>
 				</View>
 			</View>
@@ -148,18 +163,21 @@ const Home = ({ navigation }) => {
 						onPress={() => onHandleDeleteModal(item.id)}
 						style={styles.touchableContainer}
 					>
-						<Text style={styles.itemsAgregados}>{item.value}</Text>
-						{item.vegan ? (
-							<Text style={styles.vegan}>VEGAN</Text>
-						) : (
-							<Text style={styles.noVegan}>NO VEGAN</Text>
-						)}
+						<Text style={styles.itemsAgregados}>
+							{item.value}{' '}
+							{item.vegan ? (
+								<MaterialCommunityIcons name='leaf' size={20} color='#46563a' />
+							) : null}
+						</Text>
 						<Text style={styles.gasto}> $ {item.gasto}</Text>
 					</TouchableOpacity>
 				)}
 				keyExtractor={(item) => item.id}
 			/>
-			<Text style={styles.totalPrice}>TOTAL GASTADO: $ {totalPrice}</Text>
+			<View style={styles.totalPriceContainer}>
+				<FontAwesome5 name='money-bill-wave' size={18} color='#46563a' />
+				<Text style={styles.totalPrice}> TOTAL GASTADO: $ {totalPrice}</Text>
+			</View>
 			<DeleteModal
 				onHandleDeleteItem={handleDeleteItem}
 				visible={modalDeleteVisible}
@@ -169,14 +187,14 @@ const Home = ({ navigation }) => {
 			<View style={styles.buttonContainer}>
 				<CustomButton
 					textButton='LIMPIAR'
-					bgColor='#D60700'
-					textColor='#ecedf1'
+					bgColor='#8C0700'
+					textColor='gainsboro'
 					onPressProp={deleteAll}
 				/>
 				<CustomButton
 					textButton='SIGUIENTE'
-					bgColor='#88A61C'
-					textColor='#ecedf1'
+					bgColor='#46563a'
+					textColor='gainsboro'
 					onPressProp={handleCalculate}
 				/>
 			</View>

@@ -11,5 +11,6 @@ export const styles = StyleSheet.create({
 		paddingVertical: 7,
 		borderRadius: 10,
 		elevation: 2,
+		fontFamily: 'Inter_700Bold',
 	},
 });
