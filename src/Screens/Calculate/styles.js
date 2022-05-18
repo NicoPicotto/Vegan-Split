@@ -56,6 +56,10 @@ export const styles = StyleSheet.create({
 	boxTitle: {
 		fontSize: 18,
 		textAlign: 'center',
+		backgroundColor: '#ecedf1',
+		padding: 5,
+		borderRadius: 5,
+		elevation: 3,
 	},
 	buttonContainer: {
 		flexDirection: 'row',

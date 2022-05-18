@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import { styles } from './styles';
 import CustomButton from '../../Components/Button';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Calculate = ({ navigation, total, array }) => {
 	const route = useRoute();
@@ -18,8 +19,6 @@ const Calculate = ({ navigation, total, array }) => {
 
 	//Calcular qué productos son veganos
 	const filteredVegan = totalProducts.filter((vegan) => vegan.vegan == true);
-	console.log('Veganos: ', filteredVegan);
-	console.log('Todos: ', totalProducts);
 
 	//Incrementar numero de carnacas
 	const incrementPerson = () => {
@@ -57,10 +56,12 @@ const Calculate = ({ navigation, total, array }) => {
 			return total + item.gasto;
 		}, 0);
 
-		//División por cada vegano
+		//División para veganos
 		let veganEach = veganProductPrice / (personas + veganos);
-		//División por cada persona
-		let carnacaEach = totalPrice / (personas + veganos);
+
+		//División para carnacas
+		let carnacaTotalPrice = totalPrice - veganProductPrice;
+		let carnacaEach = (carnacaTotalPrice / personas) + veganEach;
 
 		//Redondeos
 		let veganRounded = veganEach.toFixed(2);
@@ -77,7 +78,7 @@ const Calculate = ({ navigation, total, array }) => {
 			<Text style={styles.cuantos}>¿Cuántos son?</Text>
 			<View style={styles.personContainer}>
 				<View style={styles.carnacasContainer}>
-					<Text style={styles.boxTitle}>Carnacas</Text>
+					<Text style={styles.boxTitle}><MaterialCommunityIcons name="food-drumstick" size={24} color="#D60700" /> Carnacas</Text>
 					<Text style={styles.counter}>{personas}</Text>
 					<View style={styles.buttonContainer}>
 						<TouchableOpacity
@@ -101,7 +102,7 @@ const Calculate = ({ navigation, total, array }) => {
 					) : null}
 				</View>
 				<View style={styles.veganContainer}>
-					<Text style={styles.boxTitle}>Veganos</Text>
+					<Text style={styles.boxTitle}><MaterialCommunityIcons name="leaf" size={24} color="#88A61C" /> Veganos</Text>
 					<Text style={styles.counter}>{veganos}</Text>
 					<View style={styles.buttonContainer}>
 						<TouchableOpacity
