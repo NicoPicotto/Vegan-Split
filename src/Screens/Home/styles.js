@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
 		marginBottom: 10,
 	},
 	button: {
-		width: '30%',
+		width: '45%',
 		alignItems: 'center',
 		justifyContent: 'center',
 		backgroundColor: '#46563a',
@@ -71,7 +71,7 @@ export const styles = StyleSheet.create({
 	textInput: {
 		padding: 5,
 		fontSize: 16,
-		width: '65%',
+		width: '60%',
 		borderBottomColor: 'gainsboro',
 		borderBottomWidth: 1,
 		fontFamily: 'Inter_400Regular',
@@ -91,7 +91,7 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		padding: 5,
-		width: '55%',
+		width: '50%',
 	},
 	priceInput: {
 		padding: 5,
@@ -108,14 +108,13 @@ export const styles = StyleSheet.create({
 	settingsVegan: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		justifyContent: 'space-between',
-		width: '40%',
-		backgroundColor: 'gainsboro',
-		paddingHorizontal: 10,
-		borderRadius: 10,
-		elevation: 2,
+		justifyContent: 'space-evenly',
+		width: '35%',
 	},
-
+	switch:  {
+		padding: 0,
+		margin: 0,	
+	},
 	centeredView: {
 		flex: 1,
 		justifyContent: 'center',

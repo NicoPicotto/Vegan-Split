@@ -121,16 +121,23 @@ const Home = ({ navigation }) => {
 		<View style={styles.container}>
 			<View style={styles.inputContainer}>
 				<TextInput
-					placeholder='Agregar gasto...'
+					placeholder='Agregar compra...'
 					onChangeText={handleOnChangeInput}
 					autoCorrect={false}
 					value={text}
 					style={styles.textInput}
 					selectionColor='#46563a'
 				/>
-				<TouchableOpacity style={styles.button} onPress={() => addItem()}>
-					<Text style={styles.textButton}>Agregar</Text>
-				</TouchableOpacity>
+				<View style={styles.settingsVegan}>
+					<Text style={styles.veganQuestion}>¿Vegan?</Text>
+					<Switch
+						trackColor={{ false: '#9F3530', true: '#7E9C68' }}
+						thumbColor={isEnabled ? '#46563a' : '#dfdfdf'}
+						onValueChange={toggleSwitch}
+						value={isEnabled}
+						style={styles.switch}
+					/>
+				</View>
 			</View>
 			<View style={styles.settingsContainer}>
 				<View style={styles.settingsPrice}>
@@ -144,16 +151,9 @@ const Home = ({ navigation }) => {
 						selectionColor='#46563a'
 					/>
 				</View>
-				<View style={styles.settingsVegan}>
-					<Text style={styles.veganQuestion}>¿Es vegan?</Text>
-					<Switch
-						trackColor={{ false: '#9F3530', true: '#7E9C68' }}
-						thumbColor={isEnabled ? '#46563a' : '#dfdfdf'}
-						onValueChange={toggleSwitch}
-						value={isEnabled}
-						style={styles.switch}
-					/>
-				</View>
+				<TouchableOpacity style={styles.button} onPress={() => addItem()}>
+					<Text style={styles.textButton}>AGREGAR</Text>
+				</TouchableOpacity>
 			</View>
 			<FlatList
 				data={itemList}
