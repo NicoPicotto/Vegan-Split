@@ -121,7 +121,7 @@ const Home = ({ navigation }) => {
 		<View style={styles.container}>
 			<View style={styles.inputContainer}>
 				<TextInput
-					placeholder='Agregar compra...'
+					placeholder='Ingresar compra...'
 					onChangeText={handleOnChangeInput}
 					autoCorrect={false}
 					value={text}
@@ -142,7 +142,7 @@ const Home = ({ navigation }) => {
 			<View style={styles.settingsContainer}>
 				<View style={styles.settingsPrice}>
 					<TextInput
-						placeholder='Agregar precio...'
+						placeholder='Ingresar precio...'
 						keyboardType='numeric'
 						onChangeText={handleOnChangeGasto}
 						number={gasto}

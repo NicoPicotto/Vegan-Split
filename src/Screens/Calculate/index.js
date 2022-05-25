@@ -107,12 +107,6 @@ const Calculate = ({ navigation, total, array }) => {
 							<Text style={styles.buttonText}>+</Text>
 						</TouchableOpacity>
 					</View>
-					{totalPriceCarnacas ? (
-						<View style={styles.resultContainer}>
-							<Text style={styles.cuantoPagan}>Paga c/u </Text>
-							<Text style={styles.cuantoPrecio}>${totalPriceCarnacas}</Text>
-						</View>
-					) : null}
 				</View>
 				<View style={styles.veganContainer}>
 					<Text style={styles.boxTitle}>
@@ -134,6 +128,18 @@ const Calculate = ({ navigation, total, array }) => {
 							<Text style={styles.buttonText}>+</Text>
 						</TouchableOpacity>
 					</View>
+				</View>
+			</View>
+			<View style={styles.personContainer}>
+				<View style={styles.carnacasResult}>
+					{totalPriceCarnacas ? (
+						<View style={styles.resultContainer}>
+							<Text style={styles.cuantoPagan}>Paga c/u </Text>
+							<Text style={styles.cuantoPrecio}>${totalPriceCarnacas}</Text>
+						</View>
+					) : null}
+				</View>
+				<View style={styles.veganResult}>
 					{totalPriceVeganos ? (
 						<View style={styles.resultContainer}>
 							<Text style={styles.cuantoPagan}>Paga c/u</Text>
@@ -141,9 +147,6 @@ const Calculate = ({ navigation, total, array }) => {
 						</View>
 					) : null}
 				</View>
-			</View>
-			<View style={styles.resultWrapper}>
-				<View></View>
 			</View>
 			<View style={styles.buttonContainer}>
 				<CustomButton

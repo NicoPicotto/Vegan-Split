@@ -23,7 +23,6 @@ export const styles = StyleSheet.create({
 	},
 	carnacasContainer: {
 		width: '47%',
-		height: '60%',
 		alignContent: 'center',
 		backgroundColor: 'white',
 		elevation: 3,
@@ -33,13 +32,18 @@ export const styles = StyleSheet.create({
 	},
 	veganContainer: {
 		width: '47%',
-		height: '60%',
 		alignContent: 'center',
 		backgroundColor: 'white',
 		elevation: 3,
 		padding: 10,
 		borderRadius: 10,
 		justifyContent: 'space-between',
+	},
+	carnacasResult: {
+		width: '47%',
+	},
+	veganResult: {
+		width: '47%',
 	},
 	counter: {
 		textAlign: 'center',

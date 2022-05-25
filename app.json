@@ -2,7 +2,7 @@
   "expo": {
     "name": "Vegan Split",
     "slug": "Vegan-Split",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon2.png",
     "userInterfaceStyle": "light",
@@ -18,11 +18,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nicopicotto.VeganSplit"
     },
     "android": {
       "package": "com.nicopicotto.VeganSplit",
-      "versionCode": 1,
+      "versionCode": 3,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon2.png",
         "backgroundColor": "#FFFFFF"
