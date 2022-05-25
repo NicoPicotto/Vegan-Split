@@ -6,7 +6,7 @@ _Aplicación mobile para calcular los gastos en juntadas donde hay vegans y no v
 
 _La app permite ingresar compras indicando nombre, precio y si son o no vegans. Estas entradas pueden eliminarse si se requiere. En la siguiente pantalla se señala cuántos veganos y no veganos hay y en base a ello calcula el monto por persona._ 
 
-https://user-images.githubusercontent.com/86528557/167302553-d1647a8a-ac0c-4c38-b241-0fa6a33c77b7.mp4
+https://user-images.githubusercontent.com/86528557/170328437-e43aaa1b-2126-467d-adbc-16c00f8103d1.mp4
 
 [Aplicación disponible en Google Play](https://play.google.com/store/apps/details?id=com.nicopicotto.VeganSplit)
 
