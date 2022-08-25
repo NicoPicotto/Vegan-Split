@@ -10,6 +10,7 @@ _La app permite ingresar compras indicando nombre, precio y si son o no vegans. 
 
 
 [Aplicación disponible en Google Play](https://play.google.com/store/apps/details?id=com.nicopicotto.VeganSplit)
+
 [Aplicación disponible en App Store](https://apps.apple.com/us/app/vegan-split/id1626559108)
 
 ## Construido con 🛠️
