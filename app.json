@@ -1,36 +1,40 @@
 {
-  "expo": {
-    "name": "Vegan Split",
-    "slug": "Vegan-Split",
-    "version": "1.0.2",
-    "orientation": "portrait",
-    "icon": "./assets/icon2.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash2.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#DCDCDC"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.nicopicotto.VeganSplit"
-    },
-    "android": {
-      "package": "com.nicopicotto.VeganSplit",
-      "versionCode": 3,
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon2.png",
-        "backgroundColor": "#FFFFFF"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon2.png"
-    }
-  }
+	"expo": {
+		"name": "Vegan Split",
+		"slug": "Vegan-Split",
+		"version": "1.0.3",
+		"orientation": "portrait",
+		"icon": "./assets/icon2.png",
+		"userInterfaceStyle": "light",
+		"splash": {
+			"image": "./assets/splash2.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#DCDCDC"
+		},
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": ["**/*"],
+		"ios": {
+			"supportsTablet": true,
+			"bundleIdentifier": "com.nicopicotto.VeganSplit",
+      "buildNumber": "2"
+		},
+		"android": {
+			"package": "com.nicopicotto.VeganSplit",
+			"versionCode": 5,
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/adaptive-icon2.png",
+				"backgroundColor": "#FFFFFF"
+			}
+		},
+		"web": {
+			"favicon": "./assets/favicon2.png"
+		},
+		"extra": {
+			"eas": {
+				"projectId": "27235be9-b8a9-442b-83d3-d9c456fa068e"
+			}
+		}
+	}
 }
