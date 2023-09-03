@@ -13,9 +13,11 @@ export const styles = StyleSheet.create({
 	},
 	modalButton: {
 		marginVertical: 20,
+		paddingHorizontal: 40,
 		display: 'flex',
+		gap: 20,
 		flexDirection: 'row',
-		width: '70%',
+		width: '100%',
 		justifyContent: 'space-around',
 	},
 
@@ -26,5 +28,32 @@ export const styles = StyleSheet.create({
 		fontSize: 18,
 		fontWeight: 'bold',
 		color: '#46563a',
+	},
+	bottomButton: {
+		alignItems: 'center',
+		justifyContent: 'center',
+		backgroundColor: 'gray',
+		padding: 10,
+		width: '50%',
+		borderRadius: 10,
+	},
+	bottomButtonOutline: {
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderColor: 'gray',
+		borderWidth: 1,
+		padding: 10,
+		width: '50%',
+		borderRadius: 10,
+	},
+	textButton: {
+		color: 'white',
+		fontSize: 15,
+		fontFamily: 'Inter-Bold',
+	},
+	textButtonOutline: {
+		color: 'gray',
+		fontSize: 15,
+		fontFamily: 'Inter-Bold',
 	},
 });

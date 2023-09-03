@@ -1,7 +1,6 @@
-import { View, Text, Modal, Button } from 'react-native';
+import { View, Text, Modal, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { styles } from './styles';
-import CustomButton from '../Button';
 
 const DeleteModal = ({
 	selectedItem,
@@ -17,18 +16,18 @@ const DeleteModal = ({
 					<Text style={styles.precioModal}>$ {selectedItem.gasto}</Text>
 				</View>
 				<View style={styles.modalButton}>
-					<CustomButton
-						textButton='ELIMINAR'
-						bgColor='#D60700'
-						textColor='gainsboro'
-						onPressProp={() => onHandleDeleteItem(selectedItem.id)}
-					/>
-					<CustomButton
-						textButton='CERRAR'
-						bgColor='grey'
-						textColor='gainsboro'
-						onPressProp={onHandleCerrar}
-					/>
+					<TouchableOpacity
+						style={styles.bottomButtonOutline}
+						onPress={onHandleCerrar}
+					>
+						<Text style={styles.textButtonOutline}>VOLVER</Text>
+					</TouchableOpacity>
+					<TouchableOpacity
+						style={styles.bottomButton}
+						onPress={() => onHandleDeleteItem(selectedItem.id)}
+					>
+						<Text style={styles.textButton}>ELIMINAR</Text>
+					</TouchableOpacity>
 				</View>
 			</View>
 		</Modal>
